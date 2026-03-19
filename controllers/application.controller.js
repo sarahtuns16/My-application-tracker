@@ -1,4 +1,4 @@
-const Application = require('../models/Application');
+import Application from '../models/Application.js';
 
 const createApplication = async (req, res) => {
   try {
@@ -75,9 +75,4 @@ const deleteApplication = async (req, res) => {
   }
 };
 
-module.exports = {
-  createApplication,
-  getApplications,
-  updateApplication,
-  deleteApplication,
-};
+export { createApplication, getApplications, updateApplication, deleteApplication };
