@@ -1,25 +1,20 @@
 import express from 'express';
+import protect from '../middleware/authMiddleware.js';
 import {
   createApplication,
   getApplication,
   updateApplication,
-  deleteApplication
+  deleteApplication,
 } from '../controllers/applicationController.js';
-
-import protect from '../middleware/authMiddleware.js'; 
 
 const router = express.Router();
 
-router.use(protect);
-
-// Routes for /api/applications
 router.route('/')
-  .post(createApplication)
-  .get(getApplication);
+  .post(protect, createApplication)
+  .get(protect, getApplication);
 
-// Routes for /api/applications/:id
 router.route('/:id')
-  .put(updateApplication)
-  .delete(deleteApplication);
+  .put(protect, updateApplication)
+  .delete(protect, deleteApplication);
 
 export default router;
